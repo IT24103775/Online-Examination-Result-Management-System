@@ -9,6 +9,12 @@
 </head>
 <body>
 <div class="auth-container">
+    <!-- Logo Section -->
+    <div class="logo-container" style="text-align: center; margin-bottom: 20px;">
+        <img src="Login/IMG/LOGO.png" alt="Site Logo" style="width: 100px; height: auto;">
+        <h2 style="font-family: 'Roboto', sans-serif; font-weight: 500;">Site Exam</h2>
+    </div>
+
     <div class="login-container" id="loginContainer">
         <h1>Login</h1>
 
