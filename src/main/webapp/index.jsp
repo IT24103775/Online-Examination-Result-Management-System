@@ -18,7 +18,7 @@
     <div class="login-container" id="loginContainer">
         <h1>Login</h1>
 
-        <form id="loginForm">
+        <form id="loginForm" method="post" action="login">
             <div class="input-group">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" required>

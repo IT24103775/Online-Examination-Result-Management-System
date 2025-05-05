@@ -65,14 +65,7 @@ public class signUpServelet extends HttpServlet {
         }
 
         // Send response
-        response.setContentType("text/html");
-        PrintWriter responseWriter = response.getWriter();
-        responseWriter.println("<!DOCTYPE html>");
-        responseWriter.println("<html>");
-        responseWriter.println("<head><title>Sign Up Success</title></head>");
-        responseWriter.println("<body><h1>Sign Up Successful! Your record number is " + recordNumber + ".</h1></body>");
-        responseWriter.println("</html>");
-        responseWriter.close();
+        response.sendRedirect("index.jsp");
     }
 
     // Get User list and single record
