@@ -36,7 +36,7 @@ public class LoginServelet extends HttpServlet {
             }
 
             // Redirect to welcome page
-            response.sendRedirect("signUp.jsp");
+            response.sendRedirect("Dashboard.jsp");
         } else {
             // Send error response
             response.setContentType("text/html");
