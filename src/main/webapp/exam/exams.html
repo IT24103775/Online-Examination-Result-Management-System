@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Management</title>
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <link rel="stylesheet" href="../../assets/css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/exams.css">
+</head>
+<body class="dashboard-body">
+    <div class="dashboard-container">
+        <nav class="sidebar">
+            <div class="logo">
+                <h2>Admin Portal</h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="students.html"><i class="fas fa-users"></i> Students</a></li>
+                <li class="active"><a href="exams.html"><i class="fas fa-book"></i> Exams</a></li>
+                <li><a href="results.html"><i class="fas fa-chart-bar"></i> Results</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+            <button id="logout" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </nav>
+        <main class="main-content">
+            <header>
+                <h1>Exam Management</h1>
+                <div class="date"><i class="far fa-calendar-alt"></i> <span id="current-date"></span></div>
+            </header>
+            <div class="content-area">
+                <form id="searchForm" style="margin-bottom:20px; display: flex; align-items: center; gap: 10px;">
+                    <label for="indexInput" style="color:#111;font-weight:bold;">Enter Index Number:</label>
+                    <input type="text" id="indexInput" name="index" required>
+                    <label for="yearInput" style="margin-left:10px;color:#111;font-weight:bold;">Year:</label>
+                    <input type="text" id="yearInput" name="year" style="width:80px;">
+                    <label for="batchInput" style="margin-left:10px;color:#111;font-weight:bold;">Batch:</label>
+                    <input type="text" id="batchInput" name="batch" style="width:80px;">
+                    <label for="examTypeInput" style="margin-left:10px;color:#111;font-weight:bold;">Exam Type:</label>
+                    <select id="examTypeInput" name="examType" style="width:120px;">
+                        <option value="">Select</option>
+                        <option value="Mid Exam">Mid Exam</option>
+                        <option value="Final Exam">Final Exam</option>
+                    </select>
+                    <button type="submit" style="margin-top:0;">Search</button>
+                </form>
+                <div id="searchResult"></div>
+                <div class="action-bar">
+                    <button class="add-btn" id="showCreateExamForm"><i class="fas fa-plus"></i> Create Exam</button>
+                    <div class="filter-group">
+                        <select class="filter-select">
+                            <option>All Subjects</option>
+                            <option>Mathematics</option>
+                            <option>Science</option>
+                            <option>English</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Create Exam Form (hidden by default) -->
+                <form id="createExamForm" style="display:none; margin:20px 0; background:#23234a; padding:20px; border-radius:8px;">
+                    <h3>Create Exam</h3>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <label>Index Number: <input type="text" id="examIndex" required></label>
+                        <label>Date: <input type="date" id="examDate" required></label>
+                        <label>Exam Type:
+                            <select id="examType" required>
+                                <option value="Mid Exam">Mid Exam</option>
+                                <option value="Final Exam">Final Exam</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div style="margin-top: 18px; display: flex; gap: 12px;">
+                        <button type="submit" style="background:#2d8cff; color:#fff; border:none; border-radius:5px; padding:8px 18px; cursor:pointer;">
+                            <i class="fas fa-plus"></i> Create
+                        </button>
+                        <button type="button" id="cancelCreateExam" style="background:#888; color:#fff; border:none; border-radius:5px; padding:8px 18px; cursor:pointer;">
+                            <i class="fas fa-times"></i> Cancel
+                        </button>
+                    </div>
+                </form>
+                <div id="createdExamInfo" style="margin-bottom:20px;"></div>
+                <div class="exam-grid">
+                    <!-- Exam list will be populated by JavaScript -->
+                </div>
+                <div style="margin-top:30px;">
+                    <h3 style="color:#111;">Exam Types</h3>
+                    <table border="1" style="width:100%;margin-top:10px;">
+                        <thead>
+                            <tr>
+                                <th>Index Number</th>
+                                <th>Exam Type</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2021001</td>
+                                <td>Mid Exam</td>
+                                <td>2024-06-10</td>
+                            </tr>
+                            <tr>
+                                <td>2021002</td>
+                                <td>Final Exam</td>
+                                <td>2024-12-15</td>
+                            </tr>
+                            <tr>
+                                <td>2021003</td>
+                                <td>Mid Exam</td>
+                                <td>2024-06-12</td>
+                            </tr>
+                            <tr>
+                                <td>2021004</td>
+                                <td>Final Exam</td>
+                                <td>2024-12-17</td>
+                            </tr>
+                            <tr>
+                                <td>2021005</td>
+                                <td>Mid Exam</td>
+                                <td>2024-06-14</td>
+                            </tr>
+                            <tr>
+                                <td>2021006</td>
+                                <td>Final Exam</td>
+                                <td>2024-12-19</td>
+                            </tr>
+                            <!-- Add more index numbers as needed -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../../assets/js/shared.js"></script>
+    <script src="../../assets/js/exams.js"></script>
+    <script>
+        // Map index numbers to exam types (no subject)
+        const indexExamMap = {
+            "2021001": { type: "Mid Exam", date: "2024-06-10" },
+            "2021002": { type: "Final Exam", date: "2024-12-15" },
+            "2021003": { type: "Mid Exam", date: "2024-06-12" },
+            "2021004": { type: "Final Exam", date: "2024-12-17" },
+            "2021005": { type: "Mid Exam", date: "2024-06-14" },
+            "2021006": { type: "Final Exam", date: "2024-12-19" }
+            // ...add more as needed...
+        };
+
+        document.getElementById('searchForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const index = document.getElementById('indexInput').value.trim();
+            const year = document.getElementById('yearInput').value.trim();
+            const batch = document.getElementById('batchInput').value.trim();
+            const resultDiv = document.getElementById('searchResult');
+
+            // Show exam type for the entered index number (no subject)
+            const examInfo = indexExamMap[index];
+            if (examInfo) {
+                resultDiv.innerHTML = `<strong>Index Number:</strong> ${index} <br>
+                    <strong>Year:</strong> ${year ? year : '-'} <br>
+                    <strong>Batch:</strong> ${batch ? batch : '-'} <br>
+                    <strong>Exam Type:</strong> ${examInfo.type} <br>
+                    <strong>Date:</strong> ${examInfo.date}`;
+            } else {
+                resultDiv.innerHTML = `<span style="color:red;">No exam type found for this index number.</span>`;
+            }
+        });
+
+        // Show/Hide Create Exam Form
+        document.getElementById('showCreateExamForm').onclick = function() {
+            document.getElementById('createExamForm').style.display = 'block';
+            document.getElementById('createdExamInfo').innerHTML = '';
+        };
+        document.getElementById('cancelCreateExam').onclick = function() {
+            document.getElementById('createExamForm').reset();
+            document.getElementById('createExamForm').style.display = 'none';
+        };
+
+        // Handle Create Exam Form submission
+        document.getElementById('createExamForm').onsubmit = function(e) {
+            e.preventDefault();
+            const index = document.getElementById('examIndex').value.trim();
+            const date = document.getElementById('examDate').value;
+            const type = document.getElementById('examType').value;
+            if (!index || !date || !type) return;
+            document.getElementById('createdExamInfo').innerHTML = `
+                <strong>Index Number:</strong> ${index} <br>
+                <strong>Date:</strong> ${date} <br>
+                <strong>Exam Type:</strong> ${type}
+            `;
+            document.getElementById('createExamForm').reset();
+            document.getElementById('createExamForm').style.display = 'none';
+        };
+    </script>
+</body>
+</html>

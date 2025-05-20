@@ -1,0 +1,5 @@
+[
+  { "id": 1, "subject": "Mathematics", "date": "2025-05-18", "active": true },
+  { "id": 2, "subject": "Science", "date": "2025-05-18", "active": false },
+  { "id": 3, "subject": "English", "date": "2025-05-18", "active": true }
+]
