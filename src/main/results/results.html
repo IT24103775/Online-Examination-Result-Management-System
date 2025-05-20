@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Results</title>
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <link rel="stylesheet" href="../../assets/css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <div class="dashboard-container">
+        <nav class="sidebar">
+            <div class="logo">
+                <h2>Admin Portal</h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="students.html"><i class="fas fa-users"></i> Students</a></li>
+                <li><a href="exams.html"><i class="fas fa-book"></i> Exams</a></li>
+                <li class="active"><a href="results.html"><i class="fas fa-chart-bar"></i> Results</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+            <button id="logout" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </nav>
+        <main class="main-content">
+            <header>
+                <h1>Results Analysis</h1>
+                <div class="date"><i class="far fa-calendar-alt"></i> <span id="current-date"></span></div>
+            </header>
+            <div class="content-area">
+                <div class="results-summary">
+                    <div class="chart-container">
+                        <!-- Charts will be added here -->
+                    </div>
+                    <div class="results-table">
+                        <form id="resultForm" style="margin-bottom:20px; display:flex; align-items:center; gap:0;">
+                            <label for="rollInput" style="color:#111;font-weight:bold; margin-right:10px;">Enter Index Number:</label>
+                            <input type="text" id="rollInput" name="roll" required style="margin-right:8px;">
+                            <button type="submit" style="background:#2d8cff; color:#fff; border:none; border-radius:5px; padding:4px 0; width:5cm; font-size:13px; font-weight:bold; cursor:pointer; transition:background 0.3s;">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                        <div id="resultOutput"></div>
+                        <table border="1" style="width:100%;margin-top:20px;">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Index Number</th>
+                                    <th>Name</th>
+                                    <th>Subject</th>
+                                    <th>Marks</th>
+                                    <th>Status</th>
+                                    <th>Grade</th>
+                                </tr>
+                            </thead>
+                            <tbody id="resultsTableBody">
+                                <!-- Data will be inserted here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../../assets/js/shared.js"></script>
+    <script src="../../assets/js/results.js"></script>
+    <script>
+        // Static data for 10 students without module
+        const staticResults = [
+            { roll: "2021001", name: "Alice", subject: "Mathematics", marks: 85, passed: true, grade: "A" },
+            { roll: "2021002", name: "Bob", subject: "Science", marks: 72, passed: true, grade: "B" },
+            { roll: "2021003", name: "Charlie", subject: "English", marks: 48, passed: false, grade: "F" },
+            { roll: "2021004", name: "David", subject: "History", marks: 67, passed: true, grade: "B" },
+            { roll: "2021005", name: "Eva", subject: "Geography", marks: 54, passed: true, grade: "C" },
+            { roll: "2021006", name: "Frank", subject: "Physics", marks: 91, passed: true, grade: "A" },
+            { roll: "2021007", name: "Grace", subject: "Chemistry", marks: 62, passed: true, grade: "B" },
+            { roll: "2021008", name: "Helen", subject: "Biology", marks: 77, passed: true, grade: "B" },
+            { roll: "2021009", name: "Ian", subject: "ICT", marks: 59, passed: true, grade: "C" },
+            { roll: "2021010", name: "Jane", subject: "Art", marks: 39, passed: false, grade: "F" }
+        ];
+        const resultsTableBody = document.getElementById("resultsTableBody");
+        staticResults.forEach((result, idx) => {
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td>${idx + 1}</td>
+                <td>${result.roll}</td>
+                <td>${result.name}</td>
+                <td>${result.subject}</td>
+                <td>${result.marks}</td>
+                <td style="color:${result.passed ? 'green' : 'red'};">${result.passed ? 'Pass' : 'Fail'}</td>
+                <td>${result.grade}</td>
+            `;
+            resultsTableBody.appendChild(tr);
+        });
+
+        document.getElementById('resultForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const roll = document.getElementById('rollInput').value.trim();
+            const output = document.getElementById('resultOutput');
+            output.textContent = 'Loading...';
+            // Find the student by index number
+            const found = staticResults.find(r => r.roll === roll);
+            if (!found) {
+                output.innerHTML = `<span style="color:red;">Result not found for this index number.</span>`;
+            } else {
+                output.innerHTML = `
+                    <strong>Index Number:</strong> ${found.roll}<br>
+                    <strong>Name:</strong> ${found.name}<br>
+                    <strong>Subject:</strong> ${found.subject}<br>
+                    <strong>Marks:</strong> ${found.marks}<br>
+                    <strong>Status:</strong> <span style="color:${found.passed ? 'green' : 'red'};">${found.passed ? 'Pass' : 'Fail'}</span><br>
+                    <strong>Grade:</strong> ${found.grade}
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

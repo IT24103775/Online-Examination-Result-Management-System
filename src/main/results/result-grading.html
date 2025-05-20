@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result & Grading Settings</title>
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <link rel="stylesheet" href="../../assets/css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .grading-container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: #23234a;
+            color: #fff;
+            border-radius: 12px;
+            padding: 32px 32px 24px 32px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+            width: 90vw;
+            min-width: 0;
+        }
+        .grading-container h2 {
+            margin-bottom: 24px;
+            color: #fff;
+            border-bottom: none; /* Remove any underline */
+            padding-bottom: 0;
+        }
+        .grading-group {
+            margin-bottom: 22px;
+        }
+        .grading-group label {
+            font-weight: bold;
+            color: #fff;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .grading-group input[type="number"],
+        .grading-group input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid #444;
+            background: #1a1c23;
+            color: #fff;
+        }
+        .grading-group select {
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid #444;
+            background: #1a1c23;
+            color: #fff;
+        }
+        .grading-actions {
+            text-align: right;
+        }
+        .grading-actions button {
+            background: #2d8cff;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 22px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .grading-actions button:active {
+            background: #1b5fa7;
+        }
+        .grading-success {
+            color: #7fff7f;
+            margin-top: 18px;
+            font-weight: bold;
+        }
+        .grade-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            background: #1a1c23;
+        }
+        .grade-table th, .grade-table td {
+            padding: 8px 6px;
+            border-bottom: 1px solid #333;
+            color: #fff;
+        }
+        .grade-table th {
+            background: #292943;
+            border-bottom: 2px solid #2d8cff; /* Add a colored underline for header */
+        }
+        .grade-table tr:last-child td {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body class="dashboard-body">
+    <div class="grading-container">
+        <h2><i class="fas fa-graduation-cap"></i> Result & Grading Settings</h2>
+        <form id="gradingForm">
+            <div class="grading-group">
+                <label>Grade Scale Setup</label>
+                <table class="grade-table" id="gradeTable">
+                    <thead>
+                        <tr>
+                            <th>Grade</th>
+                            <th>Min Mark</th>
+                            <th>Max Mark</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="gradeTableBody">
+                        <!-- Grade rows will be rendered here -->
+                    </tbody>
+                </table>
+                <div style="display:flex; gap:8px; margin-top:10px;">
+                    <input type="text" id="gradeInput" placeholder="Grade (e.g. A)" maxlength="2" style="width:60px;">
+                    <input type="number" id="minMarkInput" placeholder="Min" min="0" max="100" style="width:80px;">
+                    <input type="number" id="maxMarkInput" placeholder="Max" min="0" max="100" style="width:80px;">
+                    <button type="button" id="addGradeBtn" style="background:#2d8cff; color:#fff; border:none; border-radius:5px; padding:7px 14px; font-weight:bold; cursor:pointer;">Add</button>
+                </div>
+            </div>
+            <div class="grading-group">
+                <label for="passMark">Pass Mark Definition</label>
+                <input type="number" id="passMark" min="0" max="100" value="40" required>
+            </div>
+            <div class="grading-group">
+                <label>
+                    Auto Result Publish
+                    <select id="autoPublish" style="margin-left:10px;">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </label>
+            </div>
+            <div class="grading-group">
+                <label>
+                    Result Visibility to Students
+                    <select id="resultVisibility" style="margin-left:10px;">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </label>
+            </div>
+            <div class="grading-actions">
+                <button type="submit"><i class="fas fa-save"></i> Save Settings</button>
+            </div>
+            <div id="gradingSuccess" class="grading-success" style="display:none;">Settings Saved!</div>
+        </form>
+    </div>
+    <script>
+        // Grade scale logic
+        let grades = JSON.parse(localStorage.getItem('gradeScale')) || [
+            { grade: "A", min: 75, max: 100 },
+            { grade: "B", min: 65, max: 74 },
+            { grade: "C", min: 55, max: 64 },
+            { grade: "D", min: 40, max: 54 },
+            { grade: "F", min: 0, max: 39 }
+        ];
+
+        function renderGrades() {
+            const tbody = document.getElementById('gradeTableBody');
+            tbody.innerHTML = '';
+            grades.forEach((g, idx) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${g.grade}</td>
+                    <td>${g.min}</td>
+                    <td>${g.max}</td>
+                    <td>
+                        <button type="button" onclick="removeGrade(${idx})" style="background:#ff4757;color:#fff;border:none;border-radius:4px;padding:3px 10px;cursor:pointer;"><i class="fas fa-trash"></i></button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+        window.removeGrade = function(idx) {
+            grades.splice(idx, 1);
+            renderGrades();
+        };
+        document.getElementById('addGradeBtn').onclick = function() {
+            const grade = document.getElementById('gradeInput').value.trim().toUpperCase();
+            const min = parseInt(document.getElementById('minMarkInput').value, 10);
+            const max = parseInt(document.getElementById('maxMarkInput').value, 10);
+            if (!grade || isNaN(min) || isNaN(max) || min > max) return;
+            grades.push({ grade, min, max });
+            renderGrades();
+            document.getElementById('gradeInput').value = '';
+            document.getElementById('minMarkInput').value = '';
+            document.getElementById('maxMarkInput').value = '';
+        };
+        renderGrades();
+
+        // Load saved config if available
+        window.addEventListener('DOMContentLoaded', function() {
+            if (localStorage.getItem('gradingConfig')) {
+                const config = JSON.parse(localStorage.getItem('gradingConfig'));
+                document.getElementById('passMark').value = config.passMark || 40;
+                document.getElementById('autoPublish').value = config.autoPublish || 'yes';
+                document.getElementById('resultVisibility').value = config.resultVisibility || 'yes';
+            }
+            renderGrades();
+        });
+
+        document.getElementById('gradingForm').onsubmit = function(e) {
+            e.preventDefault();
+            const config = {
+                passMark: document.getElementById('passMark').value,
+                autoPublish: document.getElementById('autoPublish').value,
+                resultVisibility: document.getElementById('resultVisibility').value
+            };
+            localStorage.setItem('gradingConfig', JSON.stringify(config));
+            localStorage.setItem('gradeScale', JSON.stringify(grades));
+            document.getElementById('gradingSuccess').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('gradingSuccess').style.display = 'none';
+            }, 1800);
+        };
+    </script>
+</body>
+</html>
