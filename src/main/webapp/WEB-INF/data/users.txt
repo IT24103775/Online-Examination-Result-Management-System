@@ -1,0 +1,28 @@
+[USER]
+Username: aneeeeee
+Password: ravindu123
+Email: ravindu123@mail.com
+Role: student
+[/USER]
+
+[USER]
+Username: Alwis
+Password: test123
+Email: kavindualwis.edu@gmail.com
+Role: admin
+[/USER]
+
+[USER]
+Username: Shainey
+Password: shayiney
+Email: shainey@mail.com
+Role: teacher
+[/USER]
+
+[USER]
+Username: Kavindu Alwis
+Password: alwis123
+Email: alwis@mail.com
+Role: teacher
+[/USER]
+

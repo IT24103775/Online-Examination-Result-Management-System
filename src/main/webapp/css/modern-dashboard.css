@@ -1,0 +1,579 @@
+/* Modern Dashboard UI for Online Examination System */
+:root {
+  --primary-color: #4361ee;
+  --secondary-color: #3f37c9;
+  --success-color: #4caf50;
+  --danger-color: #f44336;
+  --warning-color: #ff9800;
+  --info-color: #2196f3;
+  --dark-color: #2c3e50;
+  --light-color: #f8f9fa;
+  --gray-color: #6c757d;
+  --sidebar-width: 260px;
+  --transition-speed: 0.3s;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --border-radius: 8px;
+  --font-family: 'Poppins', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: #f5f7fb;
+  color: #333;
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+/* Dashboard Layout */
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar Styling */
+.sidebar {
+  width: var(--sidebar-width);
+  background-image: linear-gradient(to bottom, var(--dark-color), #1a2639);
+  color: white;
+  position: fixed;
+  height: 100vh;
+  overflow-y: auto;
+  transition: all var(--transition-speed) ease;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding-top: 20px;
+}
+
+.sidebar .profile {
+  padding: 20px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 15px;
+}
+
+.sidebar .profile h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.sidebar .profile p {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-bottom: 10px;
+}
+
+.nav-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-menu li {
+  margin-bottom: 5px;
+}
+
+.nav-menu li a {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: all var(--transition-speed) ease;
+  border-left: 3px solid transparent;
+}
+
+.nav-menu li a i {
+  margin-right: 12px;
+  font-size: 18px;
+  width: 24px;
+  text-align: center;
+}
+
+.nav-menu li a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  border-left: 3px solid var(--primary-color);
+}
+
+.nav-menu li.active a {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-weight: 500;
+  border-left: 3px solid var(--primary-color);
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  padding: 30px;
+  margin-left: var(--sidebar-width);
+  transition: all var(--transition-speed) ease;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  color: var(--dark-color);
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 1.8rem;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+h2 i {
+  margin-right: 12px;
+  color: var(--primary-color);
+}
+
+/* Panel Sections */
+.panel-section {
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 25px;
+  margin-bottom: 25px;
+}
+
+/* Forms */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--dark-color);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="number"],
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  font-family: var(--font-family);
+  font-size: 15px;
+  transition: all 0.2s;
+  background-color: #f9f9f9;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+  background-color: white;
+}
+
+/* Buttons */
+button, .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 500;
+  transition: all var(--transition-speed) ease;
+  text-decoration: none;
+  font-family: var(--font-family);
+}
+
+button i, .button i {
+  margin-right: 8px;
+}
+
+button:hover, .button:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary {
+  background-color: var(--gray-color);
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+.btn-danger {
+  background-color: var(--danger-color);
+}
+
+.btn-danger:hover {
+  background-color: #d32f2f;
+}
+
+/* Tables */
+.table-responsive {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-bottom: 20px;
+}
+
+table th, table td {
+  padding: 15px;
+  text-align: left;
+}
+
+table th {
+  background-color: var(--dark-color);
+  color: white;
+  font-weight: 500;
+  position: sticky;
+  top: 0;
+}
+
+table tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+table tr:hover {
+  background-color: rgba(67, 97, 238, 0.05);
+}
+
+/* Action Buttons in Tables */
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.view-button, .edit-button, .delete-button {
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: var(--border-radius);
+}
+
+.view-button {
+  background-color: var(--info-color);
+}
+
+.edit-button {
+  background-color: var(--warning-color);
+}
+
+.delete-button {
+  background-color: var(--danger-color);
+}
+
+.view-button:hover {
+  background-color: #0b7dda;
+}
+
+.edit-button:hover {
+  background-color: #e68a00;
+}
+
+.delete-button:hover {
+  background-color: #d32f2f;
+}
+
+/* Alert Messages */
+.success-message, .error-message {
+  padding: 15px;
+  border-radius: var(--border-radius);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  animation: fadeIn 0.5s;
+}
+
+.success-message {
+  background-color: #e8f5e9;
+  border-left: 4px solid var(--success-color);
+  color: #2e7d32;
+}
+
+.error-message {
+  background-color: #ffebee;
+  border-left: 4px solid var(--danger-color);
+  color: #c62828;
+}
+
+.success-message i, .error-message i {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+/* Search Bar */
+.search-bar {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 12px 20px;
+  padding-left: 40px;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  font-size: 15px;
+  background-color: white;
+}
+
+.search-bar::before {
+  content: "\f002";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+}
+
+/* Empty State Styling */
+.empty-state {
+  padding: 60px 20px;
+  text-align: center;
+  background-color: white;
+  border-radius: var(--border-radius);
+  margin-bottom: 20px;
+}
+
+.empty-state i {
+  font-size: 60px;
+  color: #ddd;
+  margin-bottom: 20px;
+}
+
+.empty-state h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: var(--dark-color);
+}
+
+.empty-state p {
+  color: #777;
+  margin-bottom: 20px;
+}
+
+/* No Exam Message */
+.no-exams-message {
+  text-align: center;
+  padding: 40px;
+  background-color: white;
+  border-radius: var(--border-radius);
+}
+
+.no-exams-message i {
+  font-size: 48px;
+  color: #ddd;
+  margin-bottom: 15px;
+}
+
+.no-exams-message p {
+  margin-bottom: 20px;
+  color: #777;
+}
+
+/* Count Elements */
+.exam-count, .user-count {
+  background-color: var(--light-color);
+  border-radius: 20px;
+  padding: 8px 15px;
+  font-size: 14px;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+/* Modal Styling */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1050;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 50px auto;
+  width: 90%;
+  max-width: 600px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  animation: modalSlideIn 0.3s;
+}
+
+.modal-header {
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: var(--dark-color);
+}
+
+.close {
+  font-size: 28px;
+  font-weight: bold;
+  color: #999;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #333;
+}
+
+.modal-form {
+  padding: 20px;
+}
+
+.modal-footer {
+  padding: 15px 20px;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* Role Badges */
+.role-badge {
+  padding: 4px 10px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+.role-admin {
+  background-color: #fce4ec;
+  color: #c2185b;
+}
+
+.role-teacher {
+  background-color: #e3f2fd;
+  color: #1565c0;
+}
+
+.role-student {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+/* Tooltips */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  border-radius: 4px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 12px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalSlideIn {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .sidebar {
+    width: 70px;
+  }
+  
+  .sidebar .profile h3, 
+  .sidebar .profile p, 
+  .nav-menu li a span {
+    display: none;
+  }
+  
+  .nav-menu li a {
+    justify-content: center;
+    padding: 15px 5px;
+  }
+  
+  .nav-menu li a i {
+    margin: 0;
+    font-size: 20px;
+  }
+  
+  .main-content {
+    margin-left: 70px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding: 20px 15px;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  .panel-section {
+    padding: 15px;
+  }
+  
+  table th, table td {
+    padding: 10px;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+    gap: 5px;
+  }
+}

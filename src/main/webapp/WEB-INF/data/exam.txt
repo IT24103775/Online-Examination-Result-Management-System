@@ -1,0 +1,40 @@
+[EXAM]
+ID: 230ca7cb-8626-4c34-ba0c-bc23e6193bd8
+Module: Object Oriented Programming
+Title: Object Oriented Programming
+Description: This module introduces the principles of object-oriented programming (OOP), including classes, objects, inheritance, polymorphism, encapsulation, and abstraction. Students will learn to design and implement reusable and maintainable code using OOP languages like Java or C++.
+Duration: 120
+[/EXAM]
+
+[EXAM]
+ID: 1f4efbf6-cc39-415a-a793-12e3a481baca
+Module: Data Structures and Algorithms
+Title: Data Structures and Algorithms
+Description: This module covers fundamental data structures like arrays, linked lists, stacks, queues, trees, and graphs, as well as algorithms for sorting, searching, and traversal. Emphasis is placed on time and space complexity analysis and problem-solving techniques.
+Duration: 180
+[/EXAM]
+
+[EXAM]
+ID: bcc6bfe5-8641-4b98-a500-d17032e69799
+Module: Technical Writing
+Title: Technical Writing
+Description: This course focuses on the skills required to write clear, concise, and effective technical documents, including reports, manuals, project documentation, and proposals. Students will also learn how to adapt content for different audiences and purposes.
+Duration: 120
+[/EXAM]
+
+[EXAM]
+ID: edfea9c3-4030-4200-ac74-e27aa2364ba9
+Module: Discrete Mathematics
+Title: Discrete Mathematics
+Description: This module provides the mathematical foundation for computer science, covering topics such as logic, set theory, relations, functions, combinatorics, graph theory, and proof techniques. It helps develop analytical thinking and problem-solving skills.
+Duration: 180
+[/EXAM]
+
+[EXAM]
+ID: 9dbd8d65-ef58-4fa5-9601-bfe3dd9fb13f
+Module: Data Structures and Algorithms
+Title: sasasas
+Description: asasasas
+Duration: 60
+[/EXAM]
+
