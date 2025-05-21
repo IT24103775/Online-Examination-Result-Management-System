@@ -40,52 +40,7 @@
             border-left: 4px solid var(--primary-color);
         }
         
-        .exam-title {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        
-        .exam-title h3 {
-            font-size: 1.4rem;
-            margin: 0;
-            color: var(--dark-color);
-        }
-        
-        .module-badge {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 5px 12px;
-            border-radius: 30px;
-            font-size: 12px;
-            font-weight: 500;
-        }
-        
-        .exam-info {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-bottom: 15px;
-        }
-        
-        .info-item {
-            display: flex;
-            align-items: center;
-            color: var(--gray-color);
-        }
-        
-        .info-item i {
-            margin-right: 8px;
-            color: var(--primary-color);
-        }
-        
-        .exam-description {
-            color: var(--gray-color);
-            border-top: 1px solid #eee;
-            padding-top: 15px;
-            margin-bottom: 20px;
-        }
+
         
         .exam-actions {
             display: flex;
