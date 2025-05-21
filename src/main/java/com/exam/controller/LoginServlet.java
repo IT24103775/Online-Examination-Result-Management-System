@@ -17,7 +17,6 @@ public class LoginServlet extends HttpServlet {
         
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        String email = request.getParameter("email");
         
         // Only handle admin login
         if ("admin".equals(username) && "admin1".equals(password)) {
