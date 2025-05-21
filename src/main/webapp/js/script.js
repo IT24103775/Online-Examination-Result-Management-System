@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     navItems.forEach(function(item) {
         item.addEventListener('click', function(e) {
             // Only if the href is a fragment
-            if (this.getAttribute('href').startsWith('#') {
+            if (this.getAttribute('href').startsWith('#')) {
                 e.preventDefault();
                 
                 // Remove active class from all nav items
