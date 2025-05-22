@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>User Management System</title>
-    <link rel="stylesheet" href="../../Home/Css/User.css">
+    <link rel="stylesheet" href="Home/Css/User.css">
 </head>
 <body>
 <div class="container">
@@ -126,6 +126,6 @@
     </div>
 </div>
 
-<script src="../../Home/Js/User.js"></script>
+<script src="Home/Js/User.js"></script>
 </body>
 </html>

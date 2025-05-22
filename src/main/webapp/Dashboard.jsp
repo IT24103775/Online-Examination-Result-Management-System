@@ -41,13 +41,19 @@
           </a>
         </li>
         <li>
-          <a href="Home/Page/UserList.jsp">
+          <a href="UserList.jsp">
             <i class="fas fa-users"></i>
             <span>Students</span>
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="admin-login.jsp">
+            <i class="fas fa-cog"></i>
+            <span>Admin Login</span>
+          </a>
+        </li>
+        <li>
+          <a href="settings.jsp">
             <i class="fas fa-cog"></i>
             <span>Settings</span>
           </a>
@@ -57,9 +63,9 @@
 
     <div class="sidebar-footer">
       <div class="user-profile">
-        <img src="Dashboard/img/user-avatar.png" alt="User Avatar">
+        <img src="https://i.pinimg.com/originals/f4/a3/4e/f4a34ef7fd2f8d3a347a8c0dfb73eece.jpg" alt="User Avatar">
         <div class="user-info">
-          <span class="user-name">John Doe</span>
+          <span class="user-name">it24103775@my.sliit.lk</span>
           <span class="user-role">Admin</span>
         </div>
       </div>
@@ -179,7 +185,7 @@
                   <span class="exam-month">Jun</span>
                 </div>
                 <div class="exam-details">
-                  <h4>Midterm Exam - Mathematics</h4>
+                  <h4>Midterm Exam - SLIIT Malabe</h4>
                   <p>10:00 AM - 12:00 PM</p>
                   <div class="exam-progress">
                     <div class="progress-bar" style="width: 65%;"></div>
@@ -193,7 +199,7 @@
                   <span class="exam-month">Jun</span>
                 </div>
                 <div class="exam-details">
-                  <h4>Final Exam - Science</h4>
+                  <h4>Final Exam - SLIIT Malabe</h4>
                   <p>09:00 AM - 11:30 AM</p>
                   <div class="exam-progress">
                     <div class="progress-bar" style="width: 42%;"></div>
@@ -228,11 +234,11 @@
             <tr>
               <td>
                 <div class="student-info">
-                  <img src="Dashboard/img/student1.jpg" alt="Student">
-                  <span>Sarah Johnson</span>
+                  <img src="https://i.pinimg.com/originals/f4/a3/4e/f4a34ef7fd2f8d3a347a8c0dfb73eece.jpg" alt="Student">
+                  <span>Fernando B.S.C</span>
                 </div>
               </td>
-              <td>Mathematics Midterm</td>
+              <td>DM Midterm</td>
               <td>May 10, 2023</td>
               <td>92/100</td>
               <td><span class="status-passed">Passed</span></td>
@@ -244,11 +250,11 @@
             <tr>
               <td>
                 <div class="student-info">
-                  <img src="Dashboard/img/student2.jpg" alt="Student">
-                  <span>Michael Brown</span>
+                  <img src="https://i.pinimg.com/originals/f4/a3/4e/f4a34ef7fd2f8d3a347a8c0dfb73eece.jpg" alt="Student">
+                  <span>Buddika M.D.V</span>
                 </div>
               </td>
-              <td>Science Final</td>
+              <td>OOP Final</td>
               <td>May 12, 2023</td>
               <td>78/100</td>
               <td><span class="status-passed">Passed</span></td>
@@ -260,11 +266,11 @@
             <tr>
               <td>
                 <div class="student-info">
-                  <img src="Dashboard/img/student3.jpg" alt="Student">
-                  <span>Emily Davis</span>
+                  <img src="https://i.pinimg.com/originals/f4/a3/4e/f4a34ef7fd2f8d3a347a8c0dfb73eece.jpg" alt="Student">
+                  <span>Perera K.S.D</span>
                 </div>
               </td>
-              <td>History Quiz</td>
+              <td>DSA Quiz</td>
               <td>May 15, 2023</td>
               <td>45/100</td>
               <td><span class="status-failed">Failed</span></td>
